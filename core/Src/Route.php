@@ -26,8 +26,6 @@ class Route
 	$path = explode('?', $_SERVER['REQUEST_URI'])[0];
 	$path = substr($path, 1);
 
-	var_dump($path);
-
 	if (!array_key_exists($path, self::$routes)) {
         throw new Error('This path does not exist');
 	}
