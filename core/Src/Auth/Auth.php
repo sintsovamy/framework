@@ -9,7 +9,6 @@ class Auth
     /* класс, реализующий интерфейс */
     private static IdentityInterface $user;
 
-    
     public static function init(IdentityInterface $user): void
     {
         self::$user = $user;
@@ -52,6 +51,14 @@ class Auth
         Session::clear('id');
 	return true;
     }
+
+    public static function generateCSRF(): string
+    {
+       $token = md5(time());
+       Session::set('csrf_token', $token);
+       return $token;
+    }
+
 }
 
  
