@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'root' => 'pop-it-mvc',
+    'root' => '',
     'routes' => 'routes',
     'views' => 'views'
 ];
