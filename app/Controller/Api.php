@@ -24,7 +24,6 @@ class Api
 
     public function login(Request $request)
     {
-	    $password = md5($request->password);
 	    if (Auth::attempt($request->all())) {
 		    $token = Auth::generateAuthToken();
 		    (new View())->toJSON(['user_token' => $token]);
