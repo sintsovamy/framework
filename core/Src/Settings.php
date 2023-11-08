@@ -36,6 +36,7 @@ class Settings
         return $this->db ?? [];
     }
 
+
     public function getRoutePath(): string
     {
          return '/' . $this->path['routes'] ?? '';
@@ -55,6 +56,7 @@ class Settings
     {
        unset($this->_settings['app']['routeAppMiddleware'][$key]);
     }
+
 
 }
 

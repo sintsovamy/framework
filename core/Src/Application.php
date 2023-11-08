@@ -44,17 +44,29 @@ class Application
 
     public function bind(string $key, $value): void
     {
+
         $this->binds[$key] = $value;
     }
 
     public function __get($key)
     {
+
         if (array_key_exists($key, $this->binds)) {
             return $this->binds[$key];
 	} else {
             throw new Error('Accessing a non-existent property');
+
 	}
     }
+
+    private function dbRun()
+    {
+        $this->dbManager->addConnection($this->settings->getDbSetting());
+	$this->dbManager->setEventDispatcher(new Dispatcher(new Container));
+	$this->dbManager->setAsGlobal();
+	$this->dbManager->bootEloquent();
+    }
+
 
     public function run(): void
     {

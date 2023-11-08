@@ -21,5 +21,4 @@ return [
 	'db' => \Providers\DBProvider::class,
         'auth' => \Providers\AuthProvider::class,
     ],
-  
 ];

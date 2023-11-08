@@ -34,7 +34,9 @@ class Route
 	return self::single();
     }
 
+
     public static function group(string $prefix, callable $callback): void
+
     {
         self::single()->routeCollector->addGroup($prefix, $callback);
 	Middleware::single()->group($prefix, $callback);
@@ -62,7 +64,9 @@ class Route
 	    case Dispatcher::FOUND:
 	        $handler = $routeInfo[1];
 		$vars = array_values($routeInfo[2]);
+
 		$vars[] = Middleware::single()->go($httpMethod, $uri, new Request());
+
 		$class = $handler[0];
 		$action = $handler[1];
 		call_user_func([new $class, $action], ...$vars);

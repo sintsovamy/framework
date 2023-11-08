@@ -39,6 +39,7 @@ class Request
 
     public function __get($key)
     {
+
         if (array_key_exists($key, $this->body)) {
             return $this->body[$key];
 	}
